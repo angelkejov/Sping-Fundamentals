@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+<body>
+<header th:replace="fragments/navbar::nav">
+</header>
+<main >
+    <section id="meme-feed">
+        <h1 class="container">All Accommodation <hr></h1>
+
+        <div id="memes" >
+            <section class="col-lg-6 mb-lg-0 mb-5">
+                <div th:each="a : ${accommodation}" th:object="${a}"  class="tm-intro" >
+                    <h3 class="tm-title-gray mb-4" th:text="|Name: *{name}|">Name</h3>
+                    <h5 class="tm-title-gray mb-4" th:text="|numberOfRooms: *{numberOfRooms}|">NumberOfRooms</h5>
+                    <h5 class="tm-title-gray mb-4" th:text="|Type: *{type}|">Type</h5>
+
+                    <p class="mb-5"></p>
+                    <img th:src="*{getImageUrl()}" alt="img" class="img-fluid tm-mb-3" height="400" width="500">
+                    <br>
+                    <br>
+                    <a th:href="@{/accommodation/{id}/accommodation-details(id=*{id})}" class="btn btn-primary">More</a>
+                    <hr class="mb-5 tm-hr">
+                </div>
+            </section>
+        </div>
+    </section>
+</main>
+<footer class="container-fluid"  th:replace="fragments/footer::footer"></footer>
+</body>
+</html>

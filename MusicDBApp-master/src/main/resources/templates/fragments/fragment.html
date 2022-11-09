@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=http://www.thymeleaf.org
+      xmlns:sec=http://www.thymeleaf.org/extras/spring-security
+      xmlns:shiro=http://www.pollix.at/thymeleaf/shiro>
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Honey Paradise</title>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<header>
+
+    <nav th:fragment="navigation" class="navbar navbar-expand-lg bg-nav rounded">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div th:fragment="navbar" class="login-register">
+
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto col-15  justify-content-between">
+                        <!-- EO: Logout start -->
+                        <th:block th:if="${session.user != null}">
+                            <div class="dropdown">
+                                <button class="dropbtn">Food&Drink</button>
+                                <div class="dropdown-content">
+                                    <a href="/add/food">Add Food</a>
+                                    <a href="/add/drink">Add Drink</a>
+                                    <a href="/shop">Shop</a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown">
+                                <button class="dropbtn">Repices</button>
+                                <div class="dropdown-content">
+                                    <a href="#">You should try</a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown">
+                                <button class="dropbtn">Healing</button>
+                            </div>
+
+                            <div class="dropdown">
+                                <button class="dropbtn">Rating</button>
+                                <div class="dropdown-content">
+                                    <a href="#">Rate the app</a>
+                                    <a href="#">Add comment</a>
+                                </div>
+                            </div>
+
+                            <div class="dropdown">
+                                <button class="dropbtn">Stores</button>
+                                <div class="dropdown-content">
+                                    <a href="#">Add Store</a>
+                                </div>
+                            </div>
+
+                            <div style="text-align: right">
+                                <li class="nav-item col-md-8">
+                                    <a class="nav-link text-white active h5" href="/users/logout">Logout</a>
+                                </li>
+                            </div>
+
+                        </th:block>
+
+                        <th:block th:if="${session.user == null}">
+                        <li class="nav-item" sec:authorize="!isAuthenticated()">
+                            <a  class="nav-link"   th:href="@{/users/register}">Register</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="!isAuthenticated()">
+                            <a class="nav-link" th:href="@{/users/login}">Login</a>
+                        </li>
+                        </th:block>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+    </nav>
+</header>
+
+<link th:fragment="icon" rel="shortcut icon" href="/img/bee.jpg"/>
+
+<footer th:fragment="footer" class="footer">
+    <div class="footerContainer">
+        <p class="copyright">© Copyright 2022-2022, HoneyParadise. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>

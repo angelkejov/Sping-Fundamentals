@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+<body>
+<header th:replace="fragments/navbar::nav">
+</header>
+<main >
+    <section id="meme-feed">
+        <h1>All places</h1>
+        <!--        <div th:each="c : ${cities}" th:object="${c}" id="memes" >-->
+        <section class="col-lg-6 mb-lg-0 mb-5">
+            <div th:each="c : ${places}" th:object="${c}" class="tm-intro" >
+                <h3 class="tm-title-gray mb-4" th:text="|Name: *{name}|">Name</h3>
+                <h4 class="tm-title-gray mb-4" th:text="|Description: *{description}|">Description</h4>
+                <h4 class="tm-title-gray mb-4" th:text="|Year: *{year}|">Year</h4>
+                <hr class="mb-5 tm-hr">
+                <!--                    private int year;-->
+                <!--                    private CapitalOrNot capitalOrNot;-->
+                <!--                    private String imageUrl;-->
+                <!--                    private String mayor;-->
+                <!--                    private AreaOfBg areaOfBg;-->
+                <!--                    private String name;-->
+                <!--                    private String type;-->
+                <!--                    private String place;-->
+                <p class="mb-5"></p>
+                <img th:src="*{getImageUrl()}" alt="Море" class="img-fluid tm-mb-3" height="400" width="500">
+                <br>
+                <br>
+                <a href="/details/" class="btn btn-primary" >Вижте още</a>
+                <br>
+                <br>
+            </div>
+        </section>
+        <!--        </div>-->
+    </section>
+</main>
+<footer class="container-fluid"  th:replace="fragments/footer::footer"></footer>
+</body>
+</html>

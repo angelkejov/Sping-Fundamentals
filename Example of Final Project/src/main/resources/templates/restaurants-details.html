@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+<body>
+<header th:replace="fragments/navbar::nav">
+</header>
+<input type="hidden" name="placeId" id="placeId" th:value="${restaurants.id}">
+<main>
+    <section th:object="${restaurants}">
+        <h1 class="container">Restaurant details
+            <hr>
+        </h1>
+
+        <div class="col-lg-6 mb-lg-0 mb-5"><h1 th:text="|City name:  *{name}|">City name</h1>
+            <div class="meme-details">
+                <h4>RestaurantType: <h5 th:text="*{restaurantType}">Restaurant Type</h5></h4>
+                <h5 th:text="|Price Range:  *{priceRange}|">Price Range</h5>
+                <h5 th:text="|Rating:  *{rating}|">Rating</h5>
+                <h5 th:text="|Address:  *{address}|"> Address</h5>
+                <h5 th:text="|Menu:  *{menu}|"> Menu</h5>
+                <h5 th:text="|Price Range:  *{priceRange}|"> Price Range</h5>
+                <div class="meme-img">
+                    <img th:src="*{getImg()}" alt="" class="img-fluid tm-mb-3" height="300" width="400">
+                </div>
+                <div>
+                    <hr>
+                </div>
+                <div class="meme-description">
+                    <div class="row">
+<!--                        <a class="btn btn-link" th:href="@{/restaurants/{id}/restaurants-update(id=*{id})}">Update</a>-->
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="container-fluid" th:replace="fragments/footer::footer"></footer>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+<body>
+<header th:replace="fragments/navbar::nav">
+</header>
+<main >
+  <div class="container">
+    <h1 >Welcome to Stats!</h1>
+    <h3 >Total requests <th:block th:text="${stats.getTotalRequests()}"></th:block></h3>
+    <h3>Anonymous requests <th:block th:text="${stats.getAnonRequests()}"></th:block></h3>
+    <h3 >Authorized requests <th:block th:text="${stats.getAuthRequests()}"></th:block></h3>
+  </div>
+</main>
+<footer class="container-fluid"  th:replace="fragments/footer::footer"></footer>
+</body>
+</html>

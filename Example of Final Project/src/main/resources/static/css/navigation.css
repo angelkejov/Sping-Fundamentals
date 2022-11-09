@@ -1,0 +1,53 @@
+nav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+nav  a, nav span {
+    /*.navigation11{*/
+    float: left;
+    /*color: green;*/
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.nav-item{
+    float: left;
+    /*color: green;*/
+    color: #383838;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+
+nav a:hover {
+    /*background-color: green;*/
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+nav a, #common {
+    float: left;
+}
+nav a.active {
+    /*background-color: green;*/
+    background-color: #0069d9;
+    /*color: green;*/
+}
+
+.profile {
+    float:  right;
+}
+.profile1 {
+    float: left;
+}
+
+/* nav div.user {
+    display: none;js
+} */

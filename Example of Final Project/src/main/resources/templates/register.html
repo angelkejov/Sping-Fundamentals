@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+<body>
+<header th:replace="fragments/navbar::nav">
+</header>
+
+<section id="register">
+    <form  th:action="@{/users/register}"
+           th:method="post"
+           th:object="${userModel}" id="register-form">
+        <div class="container">
+            <h1>Register</h1>
+            <label for="firstName">First Name</label>
+            <input th:field="*{firstName}" th:errorclass="is-invalid"
+                   id="firstName" type="text" placeholder="Enter First Name" name="firstName"  aria-describedby="usernameHelpInline">
+            <small id="firstNameHelpInline"  class="invalid-feedback errors alert alert-danger">
+                First name length must be between 5 and 20 characters.</small>
+
+
+            <label for="lastName">Last Name</label>
+            <input th:field="*{lastName}" th:errorclass="is-invalid"
+                   id="lastName" type="text" placeholder="Enter Last Name" name="lastName" aria-describedby="firstNameHelpInline">
+            <small id="usernameHelpInline" class="invalid-feedback errors alert alert-danger">
+                Last name length must be between 5 and 20 characters.</small>
+
+
+            <label  for="username">Username</label>
+            <input th:field="*{username}" th:errorclass="is-invalid"
+                   id="username" type="text" placeholder="Enter Username" name="username" aria-describedby="usernameHelpInline">
+            <small id="nameHelpInline"  class="invalid-feedback errors alert alert-danger">
+                Enter valid username.</small>
+
+            <label for="password">Password</label>
+            <input th:field="*{password}" th:errorclass="is-invalid"
+                   id="password" type="password" placeholder="Enter Password" name="password" aria-describedby="passwordHelpInline">
+            <small id="passwordHelpInline"  class="invalid-feedback errors alert alert-danger">
+                Password length must be more than 3 characters long.</small>
+
+            <label for="repeatPass">Repeat Password</label>
+            <input th:field="*{confirmPassword}" th:errorclass="is-invalid"
+                   id="repeatPass" type="password" placeholder="Repeat Password" name="repeatPass" aria-describedby="confirmPasswordHelpInline">
+            <small id="confirmPasswordHelpInline"  class="invalid-feedback errors alert alert-danger">
+                Password don't match.</small>
+
+            <input type="submit" class="registerbtn button" value="Register">
+            <div class="container signin">
+                <p>Have a registration?<a href="/users/login">Login</a>.</p>
+            </div>
+        </div>
+    </form>
+</section>
+
+<footer class="container-fluid" th:replace="fragments/footer::footer"></footer>
+</body>
+</html>

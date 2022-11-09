@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html lang="en"
+                      xmlns:th="http://www.thymeleaf.org"
+                      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bulgarian nature</title>
+<!--    <link th:href="@{https://fonts.googleapis.com/css?family=Sans}" rel="stylesheet"/>-->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css" /> <!-- https://getbootstrap.com/ -->
+    <link th:href="@{/css/all.min.css}" rel="stylesheet" type="text/css" /> <!-- https://fontawesome.com/ -->
+<link th:href="@{/css/templatemo-business-oriented.css}" rel="stylesheet" type="text/css" />
+
+
+    <link href="/css/navigation.css" rel="stylesheet" type="text/css">
+    <link href="/css/footer.css" rel="stylesheet" type="text/css">
+    <link href="/css/login-register.css" rel="stylesheet" type="text/css">
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/parallax.min.js}"></script>
+    <script th:src="@{/js/tooplate-script.js}"></script>
+    <script th:src="@{/js/gallery.js}"></script>
+</head>
+
+<body>
+
+
+
+<script src="./js/gallery.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#parallax-1').parallax({imageSrc: 'img/biz-oriented-header.jpg'});
+        $('#parallax-2').parallax({imageSrc: 'img/biz-oriented-footer.jpg'});
+    });
+</script>
+</body>
+</html>

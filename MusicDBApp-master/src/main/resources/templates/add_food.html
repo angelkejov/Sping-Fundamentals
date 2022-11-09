@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment :: head">
+</head>
+<body>
+    <header th:replace="fragments/fragment :: navbar"></header>
+
+    <main class="content-wrap">
+        <h1 class="text-center mt-5"><span class="badge badge-pill badge-dark">Add Food</span></h1>
+        <hr class="hr-3 w-25 bg-white"/>
+        <form class="mx-auto w-25 bg-blur" th:method="POST" th:action="@{/add/food}" th:object="${addFoodBindingModel}">
+            <div class="form-group">
+                <div class="label-holder textCol d-flex justify-content-center">
+                    <label for="foodName" class="h4 mb-2">Food name</label>
+                </div>
+                <input th:field="*{foodName}" th:errorclass="bg-danger" type="text"  class="form-control" id="foodName" name="foodName"/>
+                <small th:if="${#fields.hasErrors('foodName')}" th:errors="*{foodName}" class="text-danger"></small>
+            </div>
+            <div class="form-group">
+                <div class="label-holder textCol d-flex justify-content-center">
+                    <label for="calories" class="h4 mb-2">Calories</label>
+                </div>
+                <input th:field="*{calories}" th:errorclass="bg-danger" type="number" class="form-control" id="calories" name="calories"/>
+
+                <small th:if="${#fields.hasErrors('calories')}" th:errors="*{calories}" class="text-danger">Description error message</small>
+            </div>
+            <div class="form-group">
+                <div class="label-holder  textCol d-flex justify-content-center">
+                    <label for="price" class="h4 mb-2">Price</label>
+                </div>
+                <input th:field="*{price}" th:errorclass="bg-danger" type="number" class="form-control" id="price" name="price"/>
+                <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger">Date error message</small>
+            </div>
+
+            <div class="form-group">
+                <div class="label-holder  textCol d-flex justify-content-center">
+                    <label for="imgUrl" class="h4 mb-2">Image URL</label>
+                </div>
+                <input th:field="*{imgUrl}" th:errorclass="bg-danger" type="text" class="form-control" id="imgUrl" name="imgUrl"/>
+                <small th:if="${#fields.hasErrors('imgUrl')}" th:errors="*{imgUrl}" class="text-danger">Date error message</small>
+            </div>
+
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="button btn-warning  mb-3" value="Register">Add Food</button>
+            </div>
+        </form>
+    </main>
+    <footer th:replace="fragments/fragment :: footer"></footer>
+</body>
+</html>

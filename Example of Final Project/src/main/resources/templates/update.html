@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+<body>
+<header th:replace="fragments/navbar::nav">
+</header>
+<main>
+    <section id="edit-meme">
+        <form th:object="${cityModel}"
+              th:action="@{/cities/{id}/edit(id=*{id})}"
+              th:method="patch" id="edit-form">
+            <div class="container">
+                <h1>Edit City</h1>
+                <label for="title">Name</label>
+                <input th:field="*{name}" th:errorclass="is-invalid" id="title" type="text"
+                       placeholder="Enter city name" name="city">
+                <p class="invalid-feedback errors alert alert-danger">
+                    City name is required.
+                </p>
+                <label for="title">Description</label>
+                <input th:field="*{description}" th:errorclass="is-invalid" id="description" type="text"
+                       placeholder="Enter description" name="description">
+                <p class="invalid-feedback errors alert alert-danger">
+                    Description is required.
+                </p>
+                <label for="title">Year</label>
+                <input th:field="*{year}" th:errorclass="is-invalid" id="year" type="text"
+                       placeholder="Enter year" name="year">
+                <p class="invalid-feedback errors alert alert-danger">
+                    Year is required.
+                </p>   <label for="title">Capital Or Not</label>
+                <select id="capitalOrNot" name="capitalOrNot" th:errorclass="is-invalid" class="form-control">
+                    <option value="">- Select capital or not -</option>
+                    <option th:each="capitalOrNot : ${capitalOrNot}"
+                            th:value="${capitalOrNot}"
+                            th:text="${capitalOrNot}"
+                            th:selected="${capitalOrNot} == *{capitalOrNot}"> AreaOfBg
+                    </option>
+                </select>
+
+                <p class="invalid-feedback errors alert alert-danger">
+                    This field is required.
+                </p>
+                <label for="title">ImageUrl</label>
+                <input th:field="*{imageUrl}" th:errorclass="is-invalid" id="imageUrl" type="text"
+                       placeholder="Enter imageUrl" name="imageUrl">
+                <p class="invalid-feedback errors alert alert-danger">
+                    Image url is required.
+                </p>
+                <label for="title">Mayor</label>
+                <input th:field="*{mayor}" th:errorclass="is-invalid" id="mayor" type="text"
+                       placeholder="Enter mayor" name="mayor">
+                <p class="invalid-feedback errors alert alert-danger">
+                    This field is required.
+                </p>
+                <label for="title">Area Of Bg</label>
+                <select id="areaOfBg" name="areaOfBg" th:errorclass="is-invalid" class="form-control">
+                    <option value="">- Select areaOfBg -</option>
+                    <option th:each="areaOfBg : ${areaOfBg}"
+                            th:value="${areaOfBg}"
+                            th:text="${areaOfBg}"
+                            th:selected="${areaOfBg} == *{areaOfBg}"> AreaOfBg
+                    </option>
+                </select>
+                <p class="invalid-feedback errors alert alert-danger">
+                    This field is required.
+                </p>
+
+                <input type="submit" class="registerbtn button" value="Edit City">
+            </div>
+        </form>
+    </section>
+</main>
+<footer class="container-fluid" th:replace="fragments/footer::footer"></footer>
+</body>
+</html>

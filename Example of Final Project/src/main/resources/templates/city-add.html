@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+<body>
+<header th:replace="fragments/navbar::nav">
+</header>
+<main>
+    <section id="create-meme">
+        <form th:action="@{/cities/add}" th:method="POST" th:object="${cityAddBindModel}" id="create-form">
+            <div class="container">
+                <h1>Create city</h1>
+
+                <label for="title">City Name</label>
+                <input th:field="*{name}" th:errorclass="is-invalid" id="title" type="text" placeholder="Enter name"
+                       name="title">
+                <small id="titleHelpInline"  class="invalid-feedback errors alert alert-danger">
+                    Enter city name.</small>
+
+                <label for="description">Description</label>
+                <textarea th:field="*{description}" th:errorclass="is-invalid" id="description"
+                          placeholder="Enter description" name="description"></textarea>
+                <small id="descrHelpInline"  class="invalid-feedback errors alert alert-danger">
+                    Enter valid description.</small>
+
+                <label for="imageUrl">Image</label>
+                <input th:field="*{imageUrl}" th:errorclass="is-invalid" id="imageUrl" type="text"
+                       placeholder="Enter URL" name="imageUrl">
+                <small id="imgHelpInline"  class="invalid-feedback errors alert alert-danger">
+                    Enter image URL.</small>
+
+                <label for="year">Year</label>
+                <input th:field="*{year}" th:errorclass="is-invalid" id="year" type="number"
+                       placeholder="Enter year of creation" name="year">
+                <small id="yearHelpInline"  class="invalid-feedback errors alert alert-danger">
+                    Enter year.</small>
+
+                <label for="mayor">Mayor</label>
+                <input th:field="*{mayor}" th:errorclass="is-invalid" id="mayor" type="text"
+                       placeholder="Enter mayor of city" name="year">
+                <small id="mayorHelpInline"  class="invalid-feedback errors alert alert-danger">
+                    Enter mayor.</small>
+
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="capitalOrNot">Capital or not</label>
+                        <select th:errorclass="is-invalid" id="capitalOrNot" name="capitalOrNot">
+                            <option value="">- Select capital Or not -</option>
+                            <option th:each="c : ${T(com.example.examfinal.model.entity.enums.CapitalOrNot).values()}"
+                                    th:text="${c}" th:value="${c}" th:selected="${c} == *{capitalOrNot}">Capital Or not
+                            </option>
+                        </select>
+                        <p class="errors alert alert-danger invalid-feedback">
+                            Type is required.
+                        </p>
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="areaOfBg">Area Of Bg</label>
+                        <select th:errorclass="is-invalid" id="areaOfBg" name="areaOfBg">
+                            <option value="">- Select area of Bulgaria -</option>
+                            <option th:each="c : ${T(com.example.examfinal.model.entity.enums.AreaOfBg).values()}"
+                                    th:text="${c}" th:value="${c}" th:selected="${c} == *{areaOfBg}">area Of Bg
+                            </option>
+                        </select>
+                        <p class="errors alert alert-danger invalid-feedback">
+                            Area Of Bg is required.
+                        </p>
+                    </div>
+                </div>
+                <input type="submit" class="registerbtn button" value="Create city">
+            </div>
+        </form>
+
+    </section>
+
+</main>
+<footer class="container-fluid" th:replace="fragments/footer::footer"></footer>
+</body>
+</html>

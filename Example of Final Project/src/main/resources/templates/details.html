@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+<body>
+<header th:replace="fragments/navbar::nav">
+</header>
+<main>
+    <section th:object="${city}" class="col-lg-6 mb-lg-0 mb-5">
+        <h1 class="container">City detail
+            <hr>
+        </h1>
+        <div><h1 th:text="|City name:  *{name}|">City name</h1></div>
+        <div class="meme-details">
+            <h4>Description: <h5 th:text="*{description}">Description</h5></h4>
+            <h4>Creation year: <h5 th:text="*{year}">Year</h5></h4>
+            <h4>Mayor: <h5 th:text="*{mayor}">Mayor</h5></h4>
+            <h5 th:text="|Capital Or Not:  *{capitalOrNot}|">Capital Or Not</h5>
+            <h5 th:text="|Area Of Bg:  *{areaOfBg}|"> Area Of Bg</h5>
+            <div class="meme-img">
+                <img th:src="*{getImageUrl()}" alt="" class="img-fluid tm-mb-3" height="300" width="400">
+            </div>
+            <div>
+                <hr>
+            </div>
+
+            <div class="meme-description">
+<!--                <div class="row">-->
+                   <h2 class="container"><a class="btn btn-link" th:href="@{/cities/{id}/edit(id=*{id})}">Update</a></h2>
+<!--                        <form th:action="@{/cities/{id}(id=*{id})}" th:method="delete">-->
+<!--                            <input type="submit" class="btn btn-link" value="Delete"/>-->
+<!--                        </form>-->
+
+<!--                </div>-->
+            </div>
+        </div>
+    </section>
+
+</main>
+<footer class="container-fluid" th:replace="fragments/footer::footer"></footer>
+</body>
+</html>
